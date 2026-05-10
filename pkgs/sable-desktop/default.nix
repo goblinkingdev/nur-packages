@@ -132,9 +132,11 @@ buildNpmPackage {
 
   meta = with lib; {
     description = "Unofficial Electron desktop wrapper for Sable Matrix client";
-    homepage = "https://github.com/GoblinKingDev/sable-electron";
+    homepage = "https://github.com/goblinkingdev/sable-electron";
+    changelog = "https://github.com/goblinkingdev/commits/master";
     license = licenses.agpl3Only;
-    platforms = platforms.linux ++ platforms.darwin;
+    maintainers = with maintainers; [ "goblinkingdev" ];
     mainProgram = "sable-desktop";
+    platforms = platforms.linux ++ platforms.darwin;
   };
 }
