@@ -32,7 +32,7 @@ buildDotnetModule rec {
     homepage = "https://github.com/Entarno54/Mawtrix";
     changelog = "https://github.com/Entarno54/Mawtrix/commits/main";
     license = licenses.mit;
-    maintainers = with maintainers; [ goblinkingdev ];
+    maintainers = with maintainers; [ "goblinkingdev" ];
     mainProgram = "Mawtrix";
     platforms = platforms.linux ++ platforms.darwin;
   };
