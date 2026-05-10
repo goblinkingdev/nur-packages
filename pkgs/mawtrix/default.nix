@@ -17,7 +17,7 @@ buildDotnetModule rec {
     hash = "sha256-mMeWXojnCzCM9iM4Zfi1TR3KheTHpB7VX64McRNqgmU=";
   };
 
-  nugetDeps = src + "/deps.json";
+  nugetDeps = "/deps.json";
 
   projectFile = "Mawtrix/Mawtrix.csproj";
   executables = [ "Mawtrix" ];
