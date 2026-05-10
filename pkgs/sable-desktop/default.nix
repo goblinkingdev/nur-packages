@@ -46,7 +46,7 @@ let
   sableSrc = fetchFromGitHub {
     owner = "SableClient";
     repo = "Sable";
-    rev = "v1.0.1b";
+    rev = "v1.15.3";
     hash = "sha256-KxTpV1XKjeEhTJEWKdcOkEwATs1RzfoGP1vro6xHP5U=";
   };
 
@@ -85,7 +85,7 @@ let
 in
 buildNpmPackage {
   pname = "sable-desktop";
-  version = "1.0.0";
+  version = "1.0.1b";
 
   src = fetchFromGitHub {
     owner = "goblinkingdev";
