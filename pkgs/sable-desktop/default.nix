@@ -8,6 +8,7 @@
 , pnpmConfigHook
 , makeWrapper
 , electron
+, makeDesktopItem
 , glib
 , nss
 , nspr
@@ -129,6 +130,18 @@ buildNpmPackage {
       
     runHook postInstall
   '';
+
+  passthru = {
+    desktopItem = makeDesktopItem {
+      name = "sable-desktop";
+      exec = "sable-desktop %U";
+      icon = "sable-desktop"; 
+      desktopName = "Sable";
+      comment = "Unofficial Electron desktop wrapper for Sable Matrix client";
+      categories = [ "Network" "InstantMessaging" ];
+      mimeType = [ "x-scheme-handler/element" ];
+    };
+  };
 
   meta = with lib; {
     description = "Unofficial Electron desktop wrapper for Sable Matrix client";
