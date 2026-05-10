@@ -8,13 +8,13 @@
 
 buildDotnetModule rec {
   pname = "mawtrix";
-  version = "0.6";
+  version = "0.7";
 
   src = fetchFromGitHub {
     owner = "Entarno54";
     repo = "Mawtrix";
-    rev = "8353ceb20168405259eb56402c2978290af07857";
-    hash = "sha256-mMeWXojnCzCM9iM4Zfi1TR3KheTHpB7VX64McRNqgmU=";
+    rev = "f2ea2367d93fb66573678a93b400e52c1b2007a6";
+    hash = "sha256-xDn1/VORrYtsDUKCHnRHn7j6dtRqxexjBZKamnzuotw=";
   };
 
   nugetDeps = ./deps.json;
