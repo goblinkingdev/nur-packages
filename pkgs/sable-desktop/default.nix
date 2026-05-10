@@ -88,7 +88,7 @@ buildNpmPackage {
   version = "1.0.0";
 
   src = fetchFromGitHub {
-    owner = "GoblinKingDev";
+    owner = "goblinkingdev";
     repo = "sable-electron";
     rev = "v1.0.1b"; 
     hash = "sha256-NJS+hEyJ3w/PGXtsuoChX6BTcdCEhbVRpdJ1+mwEQKI=";  };
