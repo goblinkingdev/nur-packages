@@ -4,6 +4,7 @@
 , dotnet-sdk_8
 , dotnet-runtime_8
 , openssl
+, writeText
 }:
 
 buildDotnetModule rec {
@@ -17,7 +18,11 @@ buildDotnetModule rec {
     hash = "sha256-mMeWXojnCzCM9iM4Zfi1TR3KheTHpB7VX64McRNqgmU=";
   };
 
-  nugetDeps = src + "/deps.json";
+  postFetch = ''
+    cp ${src}/deps.json $out/deps.json || true
+  '';
+
+  nugetDeps = ./deps.json; 
 
   projectFile = "Mawtrix/Mawtrix.csproj";
   executables = [ "Mawtrix" ];
