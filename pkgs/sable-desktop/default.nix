@@ -32,7 +32,15 @@
 , alsa-lib
 , libsecret
 , udev
-, xorg
+, libx11
+, libxcomposite
+, libxdamage
+, libxext
+, libxfixes
+, libxrandr
+, libxcb
+, libxshmfence
+, libxscrnsaver
 }:
 
 let
@@ -40,8 +48,7 @@ let
     glib nss nspr atk at-spi2-atk at-spi2-core cups dbus expat libdrm
     pango cairo gtk3 gdk-pixbuf mesa libgbm vulkan-loader libGL
     wayland libxkbcommon alsa-lib libsecret udev
-    xorg.libX11 xorg.libXcomposite xorg.libXdamage xorg.libXext
-    xorg.libXfixes xorg.libXrandr xorg.libxcb xorg.libxshmfence xorg.libXScrnSaver
+    libx11 libxcomposite libxdamage libxext libxfixes libxrandr libxcb libxshmfence libxscrnsaver
   ];
 
   sableSrc = fetchFromGitHub {
@@ -83,6 +90,16 @@ let
     '';
   };
 
+  desktopItem = makeDesktopItem {
+    name = "sable-desktop";
+    exec = "sable-desktop %U";
+    icon = "sable-desktop";
+    desktopName = "Sable";
+    comment = "Unofficial Electron desktop wrapper for Sable Matrix client";
+    categories = [ "Network" "InstantMessaging" ];
+    mimeTypes = [ "x-scheme-handler/element" ];
+  };
+
 in
 buildNpmPackage {
   pname = "sable-desktop";
@@ -91,8 +108,9 @@ buildNpmPackage {
   src = fetchFromGitHub {
     owner = "goblinkingdev";
     repo = "sable-electron";
-    rev = "v1.0.1b"; 
-    hash = "sha256-NJS+hEyJ3w/PGXtsuoChX6BTcdCEhbVRpdJ1+mwEQKI=";  };
+    rev = "v1.0.1b";
+    hash = "sha256-NJS+hEyJ3w/PGXtsuoChX6BTcdCEhbVRpdJ1+mwEQKI=";
+  };
 
   npmDepsHash = "sha256-5LgXHJez18yo9Z8MtBMie1P6U2PLLlO4m0q5cxK3NlM=";
 
@@ -119,28 +137,22 @@ buildNpmPackage {
 
   installPhase = ''
     runHook preInstall
-    mkdir -p $out/lib/sable-desktop $out/bin
-    
+    mkdir -p $out/lib/sable-desktop $out/bin $out/share/applications
+
     cp -r dist-electron package.json $out/lib/sable-desktop/
     cp -r ${sableWebApp} $out/lib/sable-desktop/dist
-    
+
     makeWrapper ${electron}/bin/electron $out/bin/sable-desktop \
       --add-flags "$out/lib/sable-desktop" \
       --set LD_LIBRARY_PATH "${lib.makeLibraryPath electronLibs}:/run/opengl-driver/lib"
-      
+
+    cp ${desktopItem}/share/applications/sable-desktop.desktop $out/share/applications/
+
     runHook postInstall
   '';
 
   passthru = {
-    desktopItem = makeDesktopItem {
-      name = "sable-desktop";
-      exec = "sable-desktop %U";
-      icon = "sable-desktop"; 
-      desktopName = "Sable";
-      comment = "Unofficial Electron desktop wrapper for Sable Matrix client";
-      categories = [ "Network" "InstantMessaging" ];
-      mimeType = [ "x-scheme-handler/element" ];
-    };
+    desktopItem = desktopItem;
   };
 
   meta = with lib; {
