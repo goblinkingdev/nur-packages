@@ -103,16 +103,16 @@ let
 in
 buildNpmPackage {
   pname = "sable-desktop";
-  version = "1.0.2";
+  version = "1.0.3";
 
   src = fetchFromGitHub {
     owner = "goblinkingdev";
     repo = "sable-electron";
-    rev = "v1.0.2";
-    hash = "sha256-XZmK6a3CWZNkHezBpufZwp2FJSsgbXemu+c30KWZrHo=";
+    rev = "v1.0.3";
+    hash = "sha256-sdXVc5V+cDTN9qEyR2ygQE+t8lc5BPAadWSibRCd14c=";
   };
 
-  npmDepsHash = "sha256-YvNh8qkMiGTQ44s2Iv8SBHoJckn2d45ESBqQUPNhKO8=";
+  npmDepsHash = "sha256-wV1D9t14DpKvIdyvk9Ka4yLQCC4YlRaQY8I3FUYz8+Q=";
 
   nativeBuildInputs = [
     nodejs_24
