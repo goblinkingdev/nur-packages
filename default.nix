@@ -7,7 +7,9 @@
 # commands such as:
 #     nix-build -A mypackage
 
-{ pkgs ? import <nixpkgs> { } }:
+{
+  pkgs ? import <nixpkgs> { },
+}:
 
 {
   # The `lib`, `overlays`, `nixosModules`, `homeModules`,
@@ -19,6 +21,6 @@
   # flakeModules = { }; # flake-parts modules
   overlays = import ./overlays; # nixpkgs overlays
 
-  mawtrix = pkgs.callPackage ./pkgs/mawtrix {};
-  sable-desktop = pkgs.callPackage ./pkgs/sable-desktop {};
+  mawtrix = pkgs.callPackage ./pkgs/mawtrix { };
+  sable-desktop = pkgs.callPackage ./pkgs/sable-desktop { };
 }

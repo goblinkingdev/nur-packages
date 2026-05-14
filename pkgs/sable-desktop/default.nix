@@ -1,54 +1,83 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, fetchPnpmDeps
-, buildNpmPackage
-, nodejs_24
-, pnpm
-, pnpmConfigHook
-, makeWrapper
-, electron
-, makeDesktopItem
-, glib
-, nss
-, nspr
-, atk
-, at-spi2-atk
-, at-spi2-core
-, cups
-, dbus
-, expat
-, libdrm
-, pango
-, cairo
-, gtk3
-, gdk-pixbuf
-, mesa
-, libgbm
-, vulkan-loader
-, libGL
-, wayland
-, libxkbcommon
-, alsa-lib
-, libsecret
-, udev
-, libx11
-, libxcomposite
-, libxdamage
-, libxext
-, libxfixes
-, libxrandr
-, libxcb
-, libxshmfence
-, libxscrnsaver
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  fetchPnpmDeps,
+  buildNpmPackage,
+  nodejs_24,
+  pnpm,
+  pnpmConfigHook,
+  makeWrapper,
+  electron,
+  makeDesktopItem,
+  glib,
+  nss,
+  nspr,
+  atk,
+  at-spi2-atk,
+  at-spi2-core,
+  cups,
+  dbus,
+  expat,
+  libdrm,
+  pango,
+  cairo,
+  gtk3,
+  gdk-pixbuf,
+  mesa,
+  libgbm,
+  vulkan-loader,
+  libGL,
+  wayland,
+  libxkbcommon,
+  alsa-lib,
+  libsecret,
+  udev,
+  libx11,
+  libxcomposite,
+  libxdamage,
+  libxext,
+  libxfixes,
+  libxrandr,
+  libxcb,
+  libxshmfence,
+  libxscrnsaver,
 }:
 
 let
   electronLibs = [
-    glib nss nspr atk at-spi2-atk at-spi2-core cups dbus expat libdrm
-    pango cairo gtk3 gdk-pixbuf mesa libgbm vulkan-loader libGL
-    wayland libxkbcommon alsa-lib libsecret udev
-    libx11 libxcomposite libxdamage libxext libxfixes libxrandr libxcb libxshmfence libxscrnsaver
+    glib
+    nss
+    nspr
+    atk
+    at-spi2-atk
+    at-spi2-core
+    cups
+    dbus
+    expat
+    libdrm
+    pango
+    cairo
+    gtk3
+    gdk-pixbuf
+    mesa
+    libgbm
+    vulkan-loader
+    libGL
+    wayland
+    libxkbcommon
+    alsa-lib
+    libsecret
+    udev
+    libx11
+    libxcomposite
+    libxdamage
+    libxext
+    libxfixes
+    libxrandr
+    libxcb
+    libxshmfence
+    libxscrnsaver
   ];
 
   sableSrc = fetchFromGitHub {
@@ -96,7 +125,10 @@ let
     icon = "sable-desktop";
     desktopName = "Sable";
     comment = "Unofficial Electron desktop wrapper for Sable Matrix client";
-    categories = [ "Network" "InstantMessaging" ];
+    categories = [
+      "Network"
+      "InstantMessaging"
+    ];
     mimeTypes = [ "x-scheme-handler/element" ];
   };
 

@@ -1,9 +1,10 @@
-{ lib
-, buildDotnetModule
-, fetchFromGitHub
-, dotnet-sdk_8
-, dotnet-runtime_8
-, openssl
+{
+  lib,
+  buildDotnetModule,
+  fetchFromGitHub,
+  dotnet-sdk_8,
+  dotnet-runtime_8,
+  openssl,
 }:
 
 buildDotnetModule rec {
