@@ -83,8 +83,8 @@ let
   sableSrc = fetchFromGitHub {
     owner = "SableClient";
     repo = "Sable";
-    rev = "v1.15.3";
-    hash = "sha256-KxTpV1XKjeEhTJEWKdcOkEwATs1RzfoGP1vro6xHP5U=";
+    rev = "v1.16.0";
+    hash = "sha256-/ERdX9+sWx5UnlNk1t+m6iH7N8MQgVMBljmEBrrAcbA=";
   };
 
   sableWebApp = stdenv.mkDerivation {
@@ -135,16 +135,16 @@ let
 in
 buildNpmPackage {
   pname = "sable-desktop";
-  version = "1.0.3";
+  version = "1.0.3-1.16.0";
 
   src = fetchFromGitHub {
     owner = "goblinkingdev";
     repo = "sable-electron";
-    rev = "v1.0.3";
-    hash = "sha256-sdXVc5V+cDTN9qEyR2ygQE+t8lc5BPAadWSibRCd14c=";
+    rev = "v1.0.3-1.16.0";
+    hash = "sha256-q2y04IGf2u+dLq2DCG55/q6khznmisd4E7KJ45JZsU4=";
   };
 
-  npmDepsHash = "sha256-wV1D9t14DpKvIdyvk9Ka4yLQCC4YlRaQY8I3FUYz8+Q=";
+  npmDepsHash = "sha256-GQjnwhPhdqIP9AfW9XOfv0cT3aytgg+fnFDVPr8Tsho=";
 
   nativeBuildInputs = [
     nodejs_24
