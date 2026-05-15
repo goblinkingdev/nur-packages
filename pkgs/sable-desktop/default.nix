@@ -83,8 +83,8 @@ let
   sableSrc = fetchFromGitHub {
     owner = "SableClient";
     repo = "Sable";
-    rev = "v1.16.0";
-    hash = "sha256-/ERdX9+sWx5UnlNk1t+m6iH7N8MQgVMBljmEBrrAcbA=";
+    rev = "v1.16.1";
+    hash = "sha256-4CJ9a6EUtT70G6iWnaaSlC3DWqF1zQrkeH9PTu8xyC8=";
   };
 
   sableWebApp = stdenv.mkDerivation {
